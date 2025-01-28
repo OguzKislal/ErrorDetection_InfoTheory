@@ -16,7 +16,7 @@ METHOD_SEL = 3; % 1: Theorem 2 (CRC bound), 2: Forney's bound, 3: Theorem 3 (Thr
 UER_target = 1e-5 ; 
 FER_target = 1e-3 ; 
 n_vec = round(k_vec./R); % blocklength n = k./R. 
-N = round(20*(1./UER_target)); % Number of samples to be used in MC simulations (Only relevant for METHOD_SEL=3)
+N = round(200*(1./UER_target)); % Number of samples to be used in MC simulations (Only relevant for METHOD_SEL=3)
 
 for rr = 1:length(n_vec) 
    tic
@@ -50,10 +50,11 @@ for rr = 1:length(n_vec)
          disp('UER RCU Sim Start')
          T_vec = linspace(-1.5,1.5,32) ; % Threshold (\lambda in the paper)
          T_vec = [-5:-2, T_vec, 2] ;  
-         s_vec = [0.6 : 0.2 : 2.4] ; 
+         % s_vec = [0.6 : 0.2 : 2.4] ; 
+         s_vec = 2 ; 
          % If you want a faster simulation uncomment UER_RCU_Saddlepoint_fixedTauHighData and comment UER_RCU_Saddlepoint_fixedTau
-         % [eps_UER, eps_FER] = UER_RCU_Saddlepoint_fixedTauHighData(snr,n,R,N,T_vec) ;
-         [eps_UER, eps_FER]  = UER_RCU_Saddlepoint_fixedTau(snr,n,R,N,T_vec,s_vec) ; 
+         [eps_UER, eps_FER] = UER_RCU_Saddlepoint_fixedTauHighData(snr,n,R,N,T_vec) ;
+         % [eps_UER, eps_FER]  = UER_RCU_Saddlepoint_fixedTau(snr,n,R,N,T_vec,s_vec) ; 
          xAxis = T_vec ; 
       elseif(METHOD_SEL == 4)
          %% UER Thr. with RCU
@@ -86,7 +87,7 @@ for rr = 1:length(n_vec)
       else
          snrdB_vec = [snrdB,snrdB_vec(2)] ; 
       end
-      if(abs(diff(snrdB_vec)) < 0.02)
+      if(abs(diff(snrdB_vec)) < 0.01)
          SNR_out(rr) = snrdB_vec(2) ;
          break ; 
       end
