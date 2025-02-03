@@ -1,7 +1,9 @@
 # ErasureDecoder_InfoTheory
-This repository contains the source codes to reproduce the Information theory related results of the paper "Undetected Error Probability in the Short Blocklength Regime: Approaching Finite-Blocklength Bounds with Polar Codes"
 
-The paper is submitted for a review to "IEEE TRANSACTIONS ON COMMUNICATIONS"
+This repository contains the source codes to reproduce the information-theoretic bounds reported in the paper "Undetected Error Probability in the Short Blocklength Regime: Approaching Finite-Blocklength Bounds with Polar Codes"
 
-Codes are tested in MATLAB 2024b. If you would like to contribute please contact kislal@chalmers.se. 
+The paper is currently under review.
 
+The code has been tested on MATLAB 2024b.
+Additional information on how the bounds are computed are available here
+If you would like to contribute please contact <kislal@chalmers.se>.
